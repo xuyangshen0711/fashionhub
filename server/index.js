@@ -11,10 +11,12 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // API Routes
+const authRouter = require('./routes/auth');
 const productsRouter = require('./routes/products');
 const suppliersRouter = require('./routes/suppliers');
 const employeesRouter = require('./routes/employees');
 
+app.use('/api/auth', authRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/suppliers', suppliersRouter);
 app.use('/api/employees', employeesRouter);

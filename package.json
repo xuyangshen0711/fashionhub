@@ -1,0 +1,26 @@
+{
+  "name": "fashionhub",
+  "version": "1.0.0",
+  "description": "A women's clothing brand management system with Product Catalog and Supplier Management modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuyangshen0711/fashionhub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/xuyangshen0711/fashionhub/issues"
+  },
+  "homepage": "https://github.com/xuyangshen0711/fashionhub#readme",
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "mongodb": "^7.1.0"
+  }
+}

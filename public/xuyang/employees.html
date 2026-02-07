@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Catalog - FashionHub</title>
+  <title>Employee Management - FashionHub</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -12,7 +12,7 @@
       min-height: 100vh;
     }
     .navbar {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #e91e63 0%, #9c27b0 100%);
       color: white;
       padding: 16px 24px;
       display: flex;
@@ -20,6 +20,15 @@
       align-items: center;
     }
     .navbar h1 { font-size: 24px; }
+    .nav-links { display: flex; gap: 16px; align-items: center; }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.2);
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.3); }
     .navbar button {
       background: rgba(255,255,255,0.2);
       color: white;
@@ -46,14 +55,14 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .filters select, .filters input {
+    .filters select {
       padding: 10px 14px;
       border: 1px solid #ddd;
       border-radius: 6px;
       font-size: 14px;
     }
     .btn-add {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #e91e63 0%, #9c27b0 100%);
       color: white;
       border: none;
       padding: 12px 24px;
@@ -62,51 +71,29 @@
       font-weight: 600;
       cursor: pointer;
     }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .product-card {
+    .employees-table {
+      width: 100%;
       background: white;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
     }
-    .product-card:hover { transform: translateY(-4px); }
-    .product-image {
+    table {
       width: 100%;
-      height: 200px;
-      background: #eee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
+      border-collapse: collapse;
     }
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
     }
-    .product-info { padding: 16px; }
-    .product-info h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
       color: #333;
     }
-    .product-info .price {
-      font-size: 20px;
-      font-weight: 700;
-      color: #667eea;
-      margin-bottom: 8px;
-    }
-    .product-info .meta {
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 12px;
-    }
-    .product-info .status {
+    tr:hover { background: #f8f9fa; }
+    .status {
       display: inline-block;
       padding: 4px 10px;
       border-radius: 20px;
@@ -115,17 +102,12 @@
     }
     .status.active { background: #d4edda; color: #155724; }
     .status.inactive { background: #f8d7da; color: #721c24; }
-    .product-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .product-actions button {
-      flex: 1;
-      padding: 8px;
+    .actions button {
+      padding: 6px 12px;
       border: none;
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
+      margin-right: 8px;
       font-size: 13px;
     }
     .btn-edit { background: #e3f2fd; color: #1976d2; }
@@ -181,98 +163,115 @@
       cursor: pointer;
       font-weight: 500;
     }
-    .btn-save { background: #667eea; color: white; }
+    .btn-save { background: #e91e63; color: white; }
     .btn-cancel { background: #eee; color: #333; }
+    .empty-state {
+      text-align: center;
+      padding: 60px;
+      color: #666;
+    }
   </style>
 </head>
 <body>
-    <nav class="navbar">
-    <h1>Product Catalog</h1>
-    <div class="nav-links" style="display:flex;gap:16px;align-items:center;">
-        <a href="products.html" style="color:white;text-decoration:none;padding:8px 16px;border-radius:6px;background:rgba(255,255,255,0.2);">Products</a>
-        <a href="employees.html" style="color:white;text-decoration:none;padding:8px 16px;border-radius:6px;background:rgba(255,255,255,0.2);">Employees</a>
-        <button onclick="logout()">Logout</button>
+  <nav class="navbar">
+    <h1>Employee Management</h1>
+    <div class="nav-links">
+      <a href="products.html">Products</a>
+      <a href="employees.html">Employees</a>
+      <button onclick="logout()">Logout</button>
     </div>
-    </nav>
+  </nav>
 
   <div class="container">
     <div class="toolbar">
       <div class="filters">
-        <select id="categoryFilter" onchange="loadProducts()">
-          <option value="">All Categories</option>
-          <option value="dresses">Dresses</option>
-          <option value="tops">Tops</option>
-          <option value="bottoms">Bottoms</option>
-          <option value="outerwear">Outerwear</option>
-        </select>
-        <select id="statusFilter" onchange="loadProducts()">
-          <option value="">All Status</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
+        <select id="departmentFilter" onchange="loadEmployees()">
+          <option value="">All Departments</option>
+          <option value="design">Design</option>
+          <option value="production">Production</option>
+          <option value="sales">Sales</option>
+          <option value="marketing">Marketing</option>
+          <option value="hr">HR</option>
         </select>
       </div>
-      <button class="btn-add" onclick="openModal()">+ Add Product</button>
+      <button class="btn-add" onclick="openModal()">+ Add Employee</button>
     </div>
 
-    <div class="products-grid" id="productsGrid">
-      <!-- Products will be loaded here -->
+    <div class="employees-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Hire Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="employeesBody">
+          <!-- Employees will be loaded here -->
+        </tbody>
+      </table>
     </div>
   </div>
 
   <!-- Add/Edit Modal -->
-  <div class="modal" id="productModal">
+  <div class="modal" id="employeeModal">
     <div class="modal-content">
-      <h2 id="modalTitle">Add New Product</h2>
-      <form id="productForm">
-        <input type="hidden" id="productId">
+      <h2 id="modalTitle">Add New Employee</h2>
+      <form id="employeeForm">
+        <input type="hidden" id="employeeId">
         <div class="form-group">
-          <label>Product Name</label>
-          <input type="text" id="productName" required>
+          <label>Full Name</label>
+          <input type="text" id="employeeName" required>
         </div>
         <div class="form-group">
-          <label>Image URL</label>
-          <input type="text" id="productImage" placeholder="https://...">
+          <label>Email</label>
+          <input type="email" id="employeeEmail" required>
         </div>
         <div class="form-group">
-          <label>Price ($)</label>
-          <input type="number" id="productPrice" step="0.01" required>
+          <label>Phone</label>
+          <input type="text" id="employeePhone">
         </div>
         <div class="form-group">
-          <label>Category</label>
-          <select id="productCategory" required>
-            <option value="dresses">Dresses</option>
-            <option value="tops">Tops</option>
-            <option value="bottoms">Bottoms</option>
-            <option value="outerwear">Outerwear</option>
+          <label>Department</label>
+          <select id="employeeDepartment" required>
+            <option value="design">Design</option>
+            <option value="production">Production</option>
+            <option value="sales">Sales</option>
+            <option value="marketing">Marketing</option>
+            <option value="hr">HR</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Sizes (comma separated)</label>
-          <input type="text" id="productSizes" placeholder="XS, S, M, L, XL">
+          <label>Position</label>
+          <input type="text" id="employeePosition" required>
         </div>
         <div class="form-group">
-          <label>Colors (comma separated)</label>
-          <input type="text" id="productColors" placeholder="Red, Blue, Black">
+          <label>Salary ($)</label>
+          <input type="number" id="employeeSalary" step="0.01">
         </div>
         <div class="form-group">
-          <label>Inventory</label>
-          <input type="number" id="productInventory" value="0">
+          <label>Hire Date</label>
+          <input type="date" id="employeeHireDate">
         </div>
         <div class="form-group">
           <label>Status</label>
-          <select id="productStatus">
+          <select id="employeeStatus">
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>
         </div>
         <div class="modal-actions">
           <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
-          <button type="submit" class="btn-save">Save Product</button>
+          <button type="submit" class="btn-save">Save Employee</button>
         </div>
       </form>
     </div>
   </div>
 
-  <script src="js/products.js"></script>
+  <script src="js/employees.js"></script>
 </body>
 </html>

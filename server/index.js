@@ -13,8 +13,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 // API Routes
 const productsRouter = require('./routes/products');
 const suppliersRouter = require('./routes/suppliers');
+const employeesRouter = require('./routes/employees');
+
 app.use('/api/products', productsRouter);
 app.use('/api/suppliers', suppliersRouter);
+app.use('/api/employees', employeesRouter);
 
 // Start server
 async function startServer() {

@@ -2,8 +2,13 @@
   "name": "fashionhub",
   "version": "1.0.0",
   "description": "A women's clothing brand management system with Product Catalog and Supplier Management modules",
-  "main": "index.js",
+  "main": "server/index.js",
+  "type": "module",
   "scripts": {
+    "start": "node server/index.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "seed": "node server/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,9 +16,8 @@
     "url": "git+https://github.com/xuyangshen0711/fashionhub.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "author": "Xuyang Shen, Gaoyuan Shi",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/xuyangshen0711/fashionhub/issues"
   },
@@ -22,5 +26,10 @@
     "dotenv": "^17.2.4",
     "express": "^5.2.1",
     "mongodb": "^7.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.0",
+    "prettier": "^3.8.1"
   }
 }

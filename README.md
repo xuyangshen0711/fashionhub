@@ -23,9 +23,8 @@ FashionHub is an internal management tool for small women's clothing brands. It 
 
 ## Screenshot
 
-![FashionHub Dashboard](https://fashionhub-uopx.onrender.com/xuyang/dashboard.html)
+![Dashboard](screenshots/dashboard.png)
 
-> Replace the link above with an actual screenshot image URL (e.g., upload a screenshot to the repo and reference it).
 
 ## Tech Stack
 

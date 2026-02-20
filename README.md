@@ -130,6 +130,3 @@ fashionhub/
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Screenshot
-
-![FashionHub Dashboard](screenshots/dashboard.png)

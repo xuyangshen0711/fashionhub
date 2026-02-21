@@ -125,6 +125,9 @@ fashionhub/
 ├── package.json
 └── README.md
 ```
+## Demo
+
+Watch the demo video on YouTube：https://youtu.be/DQFNU-NE2Q0
 
 ## License
 

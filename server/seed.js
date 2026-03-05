@@ -5,7 +5,6 @@ const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/fashionhub";
 const client = new MongoClient(uri);
 
 const categories = ["dresses", "tops", "bottoms", "outerwear"];
-const statuses = ["active", "inactive"];
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 const colors = [
   "Red",

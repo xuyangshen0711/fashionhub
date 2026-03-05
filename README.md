@@ -29,7 +29,6 @@ Stub, but potentially include the link to your design document here
 
 ![Dashboard](screenshots/dashboard.png)
 
-
 ## Tech Stack
 
 - **Backend:** Node.js, Express 5
@@ -129,6 +128,7 @@ fashionhub/
 ├── package.json
 └── README.md
 ```
+
 ## Demo
 
 Watch the demo video on YouTube: [Link Here](https://youtu.be/DQFNU-NE2Q0)
@@ -136,4 +136,3 @@ Watch the demo video on YouTube: [Link Here](https://youtu.be/DQFNU-NE2Q0)
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-

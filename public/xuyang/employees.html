@@ -1,79 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee Management - FashionHub</title>
-  <link rel="stylesheet" href="css/employees.css">
-</head>
-<body>
-  <nav class="navbar">
-    <h1>Employee Management</h1>
-    <div class="nav-links">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="products.html">Products</a>
-      <a href="employees.html" class="active">Employees</a>
-      <a href="../gaoyuan/suppliers.html">Suppliers</a>
-      <button onclick="logout()">Logout</button>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="toolbar">
-      <div class="filters">
-        <select id="departmentFilter" onchange="loadEmployees()">
-          <option value="">All Departments</option>
-          <option value="design">Design</option>
-          <option value="production">Production</option>
-          <option value="sales">Sales</option>
-          <option value="marketing">Marketing</option>
-          <option value="hr">HR</option>
-        </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management - FashionHub</title>
+    <link rel="stylesheet" href="css/employees.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Employee Management</h1>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="products.html">Products</a>
+        <a href="employees.html" class="active">Employees</a>
+        <a href="../gaoyuan/suppliers.html">Suppliers</a>
+        <button onclick="logout()">Logout</button>
       </div>
-      <button class="btn-add" onclick="openModal()">+ Add Employee</button>
-    </div>
+    </nav>
 
-    <div class="employees-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Position</th>
-            <th>Hire Date</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="employeesBody">
-          <!-- Employees will be loaded here -->
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Add/Edit Modal -->
-  <div class="modal" id="employeeModal">
-    <div class="modal-content">
-      <h2 id="modalTitle">Add New Employee</h2>
-      <form id="employeeForm">
-        <input type="hidden" id="employeeId">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" id="employeeName" required>
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="employeeEmail" required>
-        </div>
-        <div class="form-group">
-          <label>Phone</label>
-          <input type="text" id="employeePhone">
-        </div>
-        <div class="form-group">
-          <label>Department</label>
-          <select id="employeeDepartment" required>
+    <div class="container">
+      <div class="toolbar">
+        <div class="filters">
+          <select id="departmentFilter" onchange="loadEmployees()">
+            <option value="">All Departments</option>
             <option value="design">Design</option>
             <option value="production">Production</option>
             <option value="sales">Sales</option>
@@ -81,33 +30,86 @@
             <option value="hr">HR</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Position</label>
-          <input type="text" id="employeePosition" required>
-        </div>
-        <div class="form-group">
-          <label>Salary ($)</label>
-          <input type="number" id="employeeSalary" step="0.01">
-        </div>
-        <div class="form-group">
-          <label>Hire Date</label>
-          <input type="date" id="employeeHireDate">
-        </div>
-        <div class="form-group">
-          <label>Status</label>
-          <select id="employeeStatus">
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-        </div>
-        <div class="modal-actions">
-          <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
-          <button type="submit" class="btn-save">Save Employee</button>
-        </div>
-      </form>
-    </div>
-  </div>
+        <button class="btn-add" onclick="openModal()">+ Add Employee</button>
+      </div>
 
-  <script src="js/employees.js"></script>
-</body>
+      <div class="employees-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Position</th>
+              <th>Hire Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="employeesBody">
+            <!-- Employees will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="employeeModal">
+      <div class="modal-content">
+        <h2 id="modalTitle">Add New Employee</h2>
+        <form id="employeeForm">
+          <input type="hidden" id="employeeId" />
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="employeeName" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="employeeEmail" required />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" id="employeePhone" />
+          </div>
+          <div class="form-group">
+            <label>Department</label>
+            <select id="employeeDepartment" required>
+              <option value="design">Design</option>
+              <option value="production">Production</option>
+              <option value="sales">Sales</option>
+              <option value="marketing">Marketing</option>
+              <option value="hr">HR</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Position</label>
+            <input type="text" id="employeePosition" required />
+          </div>
+          <div class="form-group">
+            <label>Salary ($)</label>
+            <input type="number" id="employeeSalary" step="0.01" />
+          </div>
+          <div class="form-group">
+            <label>Hire Date</label>
+            <input type="date" id="employeeHireDate" />
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select id="employeeStatus">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn-cancel" onclick="closeModal()">
+              Cancel
+            </button>
+            <button type="submit" class="btn-save">Save Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/employees.js"></script>
+  </body>
 </html>

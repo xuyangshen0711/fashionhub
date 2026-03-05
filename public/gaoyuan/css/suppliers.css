@@ -1,7 +1,12 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: #f5f5f5;
   min-height: 100vh;
 }
@@ -15,7 +20,9 @@ body {
   align-items: center;
 }
 
-.navbar h1 { font-size: 22px; }
+.navbar h1 {
+  font-size: 22px;
+}
 
 .nav-links {
   display: flex;
@@ -31,8 +38,12 @@ body {
   background: rgba(255, 255, 255, 0.12);
 }
 
-.nav-links a:hover { background: rgba(255, 255, 255, 0.25); }
-.nav-links a.active { background: rgba(255, 255, 255, 0.25); }
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.25);
+}
 
 .navbar button {
   background: rgba(255, 255, 255, 0.2);
@@ -93,7 +104,8 @@ table {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+th,
+td {
   padding: 16px;
   text-align: left;
   border-bottom: 1px solid #eee;
@@ -105,7 +117,9 @@ th {
   font-weight: 600;
 }
 
-tr:hover { background: #f8f9fa; }
+tr:hover {
+  background: #f8f9fa;
+}
 
 .actions button {
   padding: 6px 12px;
@@ -116,12 +130,25 @@ tr:hover { background: #f8f9fa; }
   font-size: 13px;
 }
 
-.btn-edit { background: #e3f2fd; color: #1976d2; }
-.btn-delete { background: #ffebee; color: #c62828; }
+.btn-edit {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+.btn-delete {
+  background: #ffebee;
+  color: #c62828;
+}
 
-.rating { color: #f59e0b; }
-.muted { color: #666; font-size: 13px; }
-.categories { font-size: 13px; }
+.rating {
+  color: #f59e0b;
+}
+.muted {
+  color: #666;
+  font-size: 13px;
+}
+.categories {
+  font-size: 13px;
+}
 
 .empty-state {
   text-align: center;
@@ -143,7 +170,9 @@ tr:hover { background: #f8f9fa; }
   z-index: 1000;
 }
 
-.modal.active { display: flex; }
+.modal.active {
+  display: flex;
+}
 
 .modal-content {
   background: white;
@@ -153,7 +182,9 @@ tr:hover { background: #f8f9fa; }
   max-width: 500px;
 }
 
-.form-group { margin-bottom: 16px; }
+.form-group {
+  margin-bottom: 16px;
+}
 
 .form-group label {
   display: block;
@@ -185,5 +216,10 @@ tr:hover { background: #f8f9fa; }
   cursor: pointer;
 }
 
-.btn-save { background: #11998e; color: white; }
-.btn-cancel { background: #eee; }
+.btn-save {
+  background: #11998e;
+  color: white;
+}
+.btn-cancel {
+  background: #eee;
+}

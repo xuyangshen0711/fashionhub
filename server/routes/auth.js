@@ -13,7 +13,12 @@ function hashPassword(password) {
 router.post("/register", async (req, res) => {
   try {
     const db = getDB();
-    const { username, password, email, role } = req.body;
+    const { username, password, email } = req.body;
+
+    // Check given a username and password
+    if (!username || !password) {
+      return res.status(400).json({ error: "Username and password are required" });
+    }
 
     // Check if username already exists
     const existingUser = await db.collection("users").findOne({ username });
@@ -26,7 +31,7 @@ router.post("/register", async (req, res) => {
       username,
       password: hashPassword(password),
       email: email || "",
-      role: role || "user",
+      role: "user",
       createdAt: new Date(),
     };
 

@@ -21,6 +21,10 @@ FashionHub is an internal management tool for small women's clothing brands. It 
 - **Dashboard** — Business overview with product statistics, low-stock alerts, and employee counts by department
 - **User Authentication** — Register and login system to protect access
 
+## Design Document
+
+Stub, but potentially include the link to your design document here
+
 ## Screenshot
 
 ![Dashboard](screenshots/dashboard.png)
@@ -127,7 +131,7 @@ fashionhub/
 ```
 ## Demo
 
-Watch the demo video on YouTube：https://youtu.be/DQFNU-NE2Q0
+Watch the demo video on YouTube: [Link Here](https://youtu.be/DQFNU-NE2Q0)
 
 ## License
 
